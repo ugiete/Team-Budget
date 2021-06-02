@@ -1,4 +1,7 @@
-defmodule TeamBudget.User do
+defmodule TeamBudget.Accounts.User do
+  @moduledoc """
+  Users accounts context
+  """
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -12,6 +15,11 @@ defmodule TeamBudget.User do
     field :role, :string, default: "user"
 
     timestamps()
+  end
+
+  @doc false
+  def changeset(attrs \\ %{}) do
+    changeset(%__MODULE__{}, attrs)
   end
 
   @doc false
