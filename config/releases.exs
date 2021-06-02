@@ -19,6 +19,8 @@ secret_key_base =
     You can generate one by calling: mix phx.gen.secret
     """
 
+IO.puts(System.get_env("APP_NAME") <> ".gigalixirapp.com")
+
 config :team_budget, TeamBudgetWeb.Endpoint,
   http: [
     port: String.to_integer(System.get_env("PORT") || "4000"),
