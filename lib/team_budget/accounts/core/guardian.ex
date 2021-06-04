@@ -18,4 +18,8 @@ defmodule TeamBudget.Accounts.Core.Guardian do
   def sign(user) do
     Guardian.encode_and_sign(__MODULE__, user)
   end
+
+  def verify(token) do
+    Guardian.decode_and_verify(__MODULE__, token)
+  end
 end
