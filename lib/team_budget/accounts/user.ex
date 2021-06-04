@@ -40,6 +40,6 @@ defmodule TeamBudget.Accounts.User do
   end
 
   def hash_password(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do
-    changeset(changeset, Argon2.add_hash(password))
+    change(changeset, Argon2.add_hash(password))
   end
 end
