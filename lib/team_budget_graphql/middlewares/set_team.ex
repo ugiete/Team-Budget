@@ -12,9 +12,9 @@ defmodule TeamBudgetGraphql.Middlewares.SetTeam do
     end
   end
 
-  #defp current_role?(%{}, :any), do: true
-  #defp current_role?(%{role: "admin"}, :admin), do: true
-  #defp current_role?(%{role: "user"}, :user), do: true
-  #defp current_role?(%{role: role}, role), do: true
-  #defp current_role?(_, _), do: false
+  # defp current_role?(%{}, :any), do: true
+  # defp current_role?(%{role: "admin"}, :admin), do: true
+  # defp current_role?(%{role: "user"}, :user), do: true
+  # defp current_role?(%{role: role}, role), do: true
+  # defp current_role?(_, _), do: false
 end
