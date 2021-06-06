@@ -2,7 +2,7 @@ defmodule TeamBudget.Accounts.Core.UserRepo do
   @moduledoc """
   Connection to Database core api
   """
-  alias TeamBudget.Accounts.User
+  alias TeamBudget.Accounts.Data.User
   alias TeamBudget.Repo
 
   def list_users() do
