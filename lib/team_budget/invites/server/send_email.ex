@@ -16,7 +16,7 @@ defmodule TeamBudget.Invites.Server.SendEmail do
        }) do
     Task.async(fn ->
       new_email()
-      |> from({"Elxpro TeamBudget", "admin@email.com"})
+      |> from({"Elxpro TeamBudget", user_email})
       |> to(email)
       |> subject("[ELXPRO TeamBudget] - You were invited to join to a team #{team_slug}")
       |> add_body(team_name, user_email, has_account)
