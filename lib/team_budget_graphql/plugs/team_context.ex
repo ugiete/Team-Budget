@@ -19,8 +19,6 @@ defmodule TeamBudgetGraphql.Plugs.TeamContext do
         context = conn |> get_req_header("team") |> get_slug() |> get_team(current_user)
         Absinthe.Plug.put_options(conn, context: context)
     end
-
-    conn
   end
 
   defp context_has_user?(conn) do
