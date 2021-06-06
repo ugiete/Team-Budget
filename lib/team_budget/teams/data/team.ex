@@ -1,6 +1,10 @@
-defmodule TeamBudget.Team do
+defmodule TeamBudget.Teams.Data.Team do
   use Ecto.Schema
   import Ecto.Changeset
+  alias TeamBudget.Accounts.Data.User
+  alias TeamBudget.Util.CreateSlug
+
+  @fields ~w[name description user_id]a
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
@@ -8,7 +12,7 @@ defmodule TeamBudget.Team do
     field :description, :string
     field :name, :string
     field :slug, :string
-    field :user_id, :binary_id
+    belongs_to :user, User
 
     timestamps()
   end
@@ -21,9 +25,12 @@ defmodule TeamBudget.Team do
   @doc false
   def changeset(team, attrs) do
     team
-    |> cast(attrs, [:name, :slug, :description])
-    |> validate_required([:name, :slug, :description])
+    |> cast(attrs, @fields)
+    |> validate_required(@fields)
+    |> CreateSlug.create(:name)
     |> unique_constraint(:name)
     |> unique_constraint(:slug)
   end
+
+
 end
