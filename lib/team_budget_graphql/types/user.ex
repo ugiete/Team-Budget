@@ -10,6 +10,7 @@ defmodule TeamBudgetGraphql.Types.User do
     field :last_name, :string
     field :email, :string
     field :role, :string
+    field :teams, list_of(:team)
   end
 
   input_object :user_input do

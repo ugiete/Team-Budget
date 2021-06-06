@@ -3,6 +3,7 @@ defmodule TeamBudget.Teams.Data.Team do
   import Ecto.Changeset
   alias TeamBudget.Accounts.Data.User
   alias TeamBudget.Util.CreateSlug
+  alias TeamBudget.Repo
 
   @fields ~w[name description user_id]a
 
@@ -26,11 +27,13 @@ defmodule TeamBudget.Teams.Data.Team do
   def changeset(team, attrs) do
     team
     |> cast(attrs, @fields)
-    |> validate_required(@fields)
+    |> validate_required([:name, :description])
     |> CreateSlug.create(:name)
     |> unique_constraint(:name)
     |> unique_constraint(:slug)
   end
 
+  def query(queryable, _params), do: queryable
 
+  def data(), do: Dataloader.Ecto.new(Repo, query: &query/2)
 end
