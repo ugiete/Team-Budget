@@ -19,5 +19,6 @@ defmodule TeamBudgetGraphql.Types.User do
     field :password, non_null(:string)
     field :password_confirmation, non_null(:string)
     field :role, :string
+    field :teams, list_of(:team_input)
   end
 end
