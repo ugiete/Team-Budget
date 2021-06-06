@@ -1,4 +1,4 @@
-defmodule TeamBudget.Invite do
+defmodule TeamBudget.Invites.Data.Invite do
   use Ecto.Schema
   import Ecto.Changeset
 
