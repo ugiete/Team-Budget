@@ -1,7 +1,9 @@
 defmodule TeamBudget.Invites do
-  alias TeamBudget.Invites.Core.CreateInvite
+  alias TeamBudget.Invites.{Core.CreateInvite, Server.SendEmail}
 
   def send_invite(invites, current_user, team) do
-    CreateInvite.create(invites, current_user, team)
+    invites
+    |> CreateInvite.create(current_user, team)
+    |> SendEmail.send()
   end
 end
