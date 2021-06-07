@@ -3,6 +3,7 @@ defmodule TeamBudget.Teams.Data.Team do
   import Ecto.Changeset
   alias TeamBudget.Accounts.Data.User
   alias TeamBudget.Members.Data.Member
+  alias TeamBudget.Projects.Data.Project
   alias TeamBudget.Util.CreateSlug
   alias TeamBudget.Repo
 
@@ -14,7 +15,9 @@ defmodule TeamBudget.Teams.Data.Team do
     field :description, :string
     field :name, :string
     field :slug, :string
+    field :total_budget, :decimal, virtual: true, default: Decimal.new("0")
     belongs_to :user, User
+    has_many :projects, Project
     many_to_many :members, User, join_through: Member, on_replace: :delete
 
     timestamps()
@@ -33,6 +36,7 @@ defmodule TeamBudget.Teams.Data.Team do
     |> CreateSlug.create(:name)
     |> unique_constraint(:name)
     |> unique_constraint(:slug)
+    |> cast_assoc(:projects, with: &Project.changeset/2)
   end
 
   def query(queryable, _params), do: queryable

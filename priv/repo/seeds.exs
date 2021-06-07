@@ -10,7 +10,14 @@ alias TeamBudget.{Accounts.Data.User, Members.Data.Member, Repo}
     teams: [
       %{
         name: "Team name",
-        description: "Team Description"
+        description: "Team description",
+        projects: [
+          %{
+            name: "Project name",
+            description: "Project description",
+            budget: Decimal.new("100000.00")
+          }
+        ]
       }
     ]
   }
