@@ -11,4 +11,5 @@ defmodule TeamBudgetGraphql.Types do
   import_types(Types.Invite)
   import_types(Types.Project)
   import_types(Types.Role)
+  import_types(Types.Permission)
 end
